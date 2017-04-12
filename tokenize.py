@@ -16,15 +16,16 @@ def generateTokens():
 	#file = "int me=10; "
 	first = 0
 	forward = 0
+	token_list = []
 	while first < len(file):
 		#print(first)
 		forward = first
 		currentChar = file[forward]
 		if currentChar in "({)},;":
 			tok = token.Token(currentChar, "Special")
-			tok.printToken()
+			#tok.printToken()
 			symtab.insert(tok)
-			#yield tok
+			token_list.append(tok)
 			first += 1
 
 		elif currentChar in " \n\t":
@@ -41,9 +42,9 @@ def generateTokens():
 						break
 					elif currentState == len(table)-1:
 						tok = token.Token(file[first:forward],"Keyword")
-						tok.printToken()
+						#tok.printToken()
 						symtab.insert(tok)
-						#yield tok
+						token_list.append(tok)
 						first = forward
 					else:
 						forward += 1
@@ -61,9 +62,9 @@ def generateTokens():
 						break
 					elif currentState == len(table)-1:
 						tok = token.Token(file[first:forward],"Keyword")
-						tok.printToken()
+						#tok.printToken()
 						symtab.insert(tok)
-						#yield tok
+						token_list.append(tok)
 						first = forward
 					else:
 						forward += 1
@@ -81,9 +82,9 @@ def generateTokens():
 						break
 					elif currentState == len(table)-1:
 						tok = token.Token(file[first:forward],"ID")
-						tok.printToken()
+						#tok.printToken()
 						symtab.insert(tok)
-						#yield tok
+						token_list.append(tok)
 						first = forward
 					else:
 						forward += 1
@@ -99,15 +100,12 @@ def generateTokens():
 						break
 					elif currentState == len(table)-1:
 						tok = token.Token(file[first:forward],"Operator")
-						tok.printToken()
+						#tok.printToken()
 						symtab.insert(tok)
-						#yield tok
+						token_list.append(tok)
 						first = forward
 					else:
 						forward += 1
 						currentChar = file[forward]
 			#forward = first
-	return symtab
-
-disp = generateTokens();
-disp.display_table()
+	return symtab, token_list
