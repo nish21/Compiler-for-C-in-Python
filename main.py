@@ -13,4 +13,4 @@ if __name__ == "__main__":
 	# getNextToken function is used by parser to get next token from lexer
 	# Semantics are checked during parsing and intermediate code is generated
 	# on the fly
-	parser.yoloparse()
+	parser.parse()

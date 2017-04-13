@@ -3,8 +3,8 @@ import re
 
 def remove_comments(filename):
 	"""
-	Removes single line and multi line comments from the 
-	source program and stores the rest of the source in 
+	Removes single line and multi line comments from the
+	source program and stores the rest of the source in
 	a file input.i for further processing.
 
 	filename: path to the input source program
@@ -15,6 +15,7 @@ def remove_comments(filename):
 	string = re.sub(re.compile('\/\*([^\*]|\*+[^\*\/])*\*+\/' ) ,"" ,string)
 	outfile = open("input.i",'w')
 	outfile.write(string)
+
 
 def remove_lib():
 	"""
@@ -27,4 +28,5 @@ def remove_lib():
 	string = open("input.i").read()
 	string = re.sub(re.compile('\#.*<.*>') ,"" ,string)
 	outfile = open("input.i",'w')
-	outfile.write(string)	
+	outfile.write(string)
+	
