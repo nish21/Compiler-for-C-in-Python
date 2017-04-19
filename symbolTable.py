@@ -9,7 +9,8 @@ class symbolTable:
 			self.table[a.id] = [a.type, a.data_type, a.size]
 
 	def display_table(self):
-		print(self.table)
+		for i in self.table.keys():
+			print('{} {}'.format(i, self.table[i]))
 
 	def contains(self, str):
 		if str in self.table.keys():
@@ -25,4 +26,3 @@ class symbolTable:
 
 	def isVar(self, str):
 		return self.table[str][1]
-	

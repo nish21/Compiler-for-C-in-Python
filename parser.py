@@ -26,9 +26,12 @@ def num(s):
 def parse():
     global symbolTable, inp_list
     symbolTable, inp_list=tokenize.generateTokens()
+    #for i in inp_list:
+        #i.printToken()
     inp_list = inp_list[5:-4] #to ignore int main(){ return 0;}
     if(Statement()):
         print(code)
+        #symbolTable.display_table()
     else:
         print("Syntax error")
 
@@ -54,7 +57,7 @@ def Statement():
             if Cond():
                 next = getNextToken()
                 if next == ')':
-                    code += "\nifFalse t" + str(temp_count)+ " goto L2"
+                    code += "\nifFalse t" + str(temp_count)+ " goto L"+str(label_count+1)
                     next = getNextToken()
                     if next == '{':
                         if Statements():
